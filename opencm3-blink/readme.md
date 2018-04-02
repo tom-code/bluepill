@@ -1,5 +1,5 @@
 bluepill bootstrap code
-  - with millisecond uptime info
+  - with millis() function
   - with c++ example
 
 download and compile libopencm3
