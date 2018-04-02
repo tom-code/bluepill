@@ -1,6 +1,6 @@
 #include <libopencm3/stm32/gpio.h>
 
-extern int uptime;
+#include "utils.h"
 
 
 class blinking_led {
@@ -16,7 +16,7 @@ class blinking_led {
   }
 
   void loop() {
-    int now = uptime;
+    int now = millis();
     if ((now - last_switch) > 100) {
       last_switch = now;
       gpio_toggle(port, pin);
