@@ -9,7 +9,7 @@ CXXFLAGS = -Wall -Wextra -g3 -O0 -MD $(CPUFLAGS) -DSTM32F1 -Ilibopencm3/include 
 LDFLAGS = $(CPUFLAGS) -nostartfiles -Llibopencm3/lib -Wl,-T,pill.ld
 LDLIBS = -lopencm3_stm32f1 -lc -lnosys
 
-OBJ = main.o test.o
+OBJ = main.o test.o usart.o
 
 test1.elf: $(OBJ)
 	$(CC) $(LDFLAGS) -o $@ $(OBJ) $(LDLIBS)

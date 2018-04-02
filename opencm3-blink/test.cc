@@ -1,6 +1,7 @@
 #include <libopencm3/stm32/gpio.h>
 
 #include "utils.h"
+#include "usart.h"
 
 
 class blinking_led {
@@ -20,14 +21,17 @@ class blinking_led {
     if ((now - last_switch) > 100) {
       last_switch = now;
       gpio_toggle(port, pin);
+      usart1_send("blik\n\r");
     }
   }
-
 };
 
-blinking_led led1;
+
+static blinking_led led1;
+
 extern "C" void my_setup() {
   led1.setup(GPIOC, GPIO13);
+  usart_setup();
 }
 
 extern "C" void my_loop() {
