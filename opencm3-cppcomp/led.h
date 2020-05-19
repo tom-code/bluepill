@@ -47,7 +47,7 @@ class blinking_led : public component_t {
 
   void loop() override {
     int now = millis();
-    if ((now - last_switch) > 1000) {
+    if ((now - last_switch) > 100) {
       last_switch = now;
       gpio_toggle(port, pin);
     }

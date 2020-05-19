@@ -15,9 +15,12 @@ void sys_tick_handler(void)
   board_uptime_millis = board_uptime_millis + 1;
 }
 
+void usb_setup();
+void usb_loop();
 int main(void)
 {
-  rcc_clock_setup_in_hse_8mhz_out_72mhz();
+  usb_setup();
+  //rcc_clock_setup_in_hse_8mhz_out_72mhz();
 
   rcc_periph_clock_enable(RCC_GPIOA);
   rcc_periph_clock_enable(RCC_GPIOB);
@@ -34,6 +37,7 @@ int main(void)
 
   while (1) {
     my_loop();
+    usb_loop();
   }
 
   return 0;
